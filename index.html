@@ -3,170 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>روحانيات | منصة كابتن عبد الناصر</title>
+    <title>روحانيات | كابتن عبد الناصر طلعت</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;700;900&display=swap');
-        body { 
-            font-family: 'Tajawal', sans-serif; background: #020617; color: white;
-            background-image: radial-gradient(circle at top, #064e3b 0%, #020617 100%);
-            min-height: 100vh;
-        }
-        .quran-font { font-family: 'Amiri', serif; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(52, 211, 153, 0.1); }
-        .gold-text { color: #d4af37; text-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
-        .active-dhikr { color: #34d399; font-weight: 900; transform: scale(1.1); transition: 0.3s; }
-    </style>
 </head>
-<body class="pb-10 px-4">
+<body>
+    <nav class="p-6 flex justify-between items-center max-w-6xl mx-auto relative z-20">
+        <h1 class="text-3xl font-black gold-text">روحانيات</h1>
+        <div class="space-x-reverse space-x-6 hidden md:flex font-bold">
+            <a href="index.html" class="nav-link">الرئيسية</a>
+            <a href="quran.html" class="nav-link">المصحف</a>
+            <a href="ramadan.html" class="nav-link">رمضان 2026</a>
+            <a href="dhikr.html" class="nav-link">الأذكار</a>
+        </div>
+    </nav>
 
-    <header class="text-center pt-16 mb-12">
-        <h1 class="text-7xl md:text-9xl font-black opacity-10 absolute top-0 left-1/2 -translate-x-1/2 select-none">روحانيات</h1>
-        <h2 class="text-6xl font-black gold-text mb-2">روحانيات</h2>
-        <p class="text-emerald-400 tracking-widest font-bold">بوابتك للسكينة والإيمان</p>
-    </header>
+    <main class="container mx-auto px-4 text-center mt-20 relative z-10">
+        <img src="https://cdn-icons-png.flaticon.com/512/2160/2160912.png" class="lantern-swing mx-auto mb-6" width="100">
+        <h2 class="text-6xl md:text-8xl font-black gold-text mb-6">رمضان كريم 2026</h2>
+        <p class="text-xl text-emerald-400 mb-12 italic">بوابة كابتن عبد الناصر طلعت الإيمانية</p>
 
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        <div class="glass p-8 rounded-[40px] flex flex-col items-center justify-center text-center">
-            <h3 class="gold-text font-bold mb-6 italic">السبحة الإلكترونية الذكية</h3>
-            <div id="dhikr-label" class="text-2xl font-bold mb-4 text-emerald-400">سبحان الله</div>
-            <div id="counter" class="text-8xl font-black mb-8 text-white">0</div>
-            <button onclick="smartCount()" class="w-40 h-40 rounded-full border-8 border-emerald-500/20 bg-emerald-500/10 text-3xl font-black hover:bg-emerald-500/30 transition-all active:scale-95 shadow-2xl shadow-emerald-500/20">إضغط</button>
-            <div class="mt-6 text-[10px] text-gray-500 leading-relaxed max-w-[200px]" id="next-goal">المرحلة: 33 تسبيحة</div>
-            <button onclick="resetSibha()" class="mt-4 text-xs underline opacity-30 hover:opacity-100">إعادة السلسلة من جديد</button>
+        <div class="flex justify-center gap-4 mb-20">
+            <div class="glass p-6 min-w-[100px]"><span id="days" class="text-4xl font-bold">--</span><p class="text-xs">يوم</p></div>
+            <div class="glass p-6 min-w-[100px]"><span id="hours" class="text-4xl font-bold">--</span><p class="text-xs">ساعة</p></div>
+            <div class="glass p-6 min-w-[100px]"><span id="mins" class="text-4xl font-bold">--</span><p class="text-xs">دقيقة</p></div>
         </div>
 
-        <div class="lg:col-span-2 space-y-6">
-            <div class="glass p-8 rounded-[40px] border-t-4 border-emerald-500">
-                <h3 class="text-2xl font-black gold-text mb-6"><i class="fas fa-quran ml-2"></i> المكتبة الصوتية الشاملة</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <select id="reader-select" class="bg-slate-900 border border-emerald-500/20 p-4 rounded-2xl outline-none text-white w-full">
-                        <optgroup label="مدرسة التلاوة المصرية">
-                            <option value="ar.minshawi">محمد صديق المنشاوي</option>
-                            <option value="ar.abdulbasitmurattal">عبد الباسط عبد الصمد</option>
-                            <option value="ar.husary">محمود خليل الحصري</option>
-                            <option value="ar.mustafaismail">مصطفى إسماعيل</option>
-                            <option value="ar.tablawi">محمد محمود الطبلاوي</option>
-                            <option value="ar.banna">محمود علي البنا</option>
-                        </optgroup>
-                        <optgroup label="قراء العالم الإسلامي">
-                            <option value="ar.alafasy">مشاري راشد العفاسي</option>
-                            <option value="ar.mahermuaiqly">ماهر المعيقلي</option>
-                            <option value="ar.yasseraldossari">ياسر الدوسري</option>
-                            <option value="ar.saudalshuraim">سعود الشريم</option>
-                            <option value="ar.sudais">عبد الرحمن السديس</option>
-                            <option value="ar.ahmedajamy">أحمد العجمي</option>
-                            <option value="ar.nasseratalqatami">ناصر القطامي</option>
-                        </optgroup>
-                    </select>
-                    <select id="surah-select" class="bg-slate-900 border border-emerald-500/20 p-4 rounded-2xl outline-none text-white w-full"></select>
-                </div>
-                <audio id="main-player" controls class="w-full mb-6"></audio>
-                <div class="flex gap-4">
-                    <button onclick="downloadSurah()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 py-4 rounded-2xl font-black transition-all flex items-center justify-center gap-2">
-                        <i class="fas fa-download"></i> تحميل MP3
-                    </button>
-                </div>
-            </div>
-
-            <div id="quran-display" class="glass p-10 rounded-[40px] hidden border-b-4 border-emerald-500">
-                <h2 id="surah-name" class="quran-font text-4xl text-center gold-text mb-8"></h2>
-                <div id="surah-text" class="quran-font text-3xl leading-[2.8] text-center select-text"></div>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <a href="quran.html" class="glass p-10 block">
+                <i class="fas fa-quran text-4xl text-emerald-500 mb-4"></i>
+                <h3 class="text-xl font-bold">المصحف الشامل</h3>
+            </a>
+            <a href="ramadan.html" class="glass p-10 block">
+                <i class="fas fa-calendar-alt text-4xl text-yellow-500 mb-4"></i>
+                <h3 class="text-xl font-bold">إمساكية 2026</h3>
+            </a>
+            <a href="dhikr.html" class="glass p-10 block">
+                <i class="fas fa-bead-tree text-4xl text-blue-400 mb-4"></i>
+                <h3 class="text-xl font-bold">واحة الذاكرين</h3>
+            </a>
         </div>
-    </div>
+    </main>
 
-    <footer class="mt-20 text-center">
-        <div class="glass inline-block px-12 py-5 rounded-full border border-emerald-500/20">
-            <p class="text-sm font-bold">تم الإنشاء بواسطة: <span class="gold-text">كابتن عبد الناصر طلعت</span></p>
-        </div>
-        <p class="text-emerald-900 text-[10px] mt-6 font-mono uppercase tracking-[0.5em]">Rouhaniat Platform © 2026</p>
+    <footer class="mt-40 pb-10 text-center opacity-60">
+        <p>تم الإنشاء بواسطة: <span class="gold-text font-bold">كابتن عبد الناصر طلعت</span></p>
     </footer>
-
-    <script>
-        // --- برمجة السبحة الذكية ---
-        let count = 0;
-        function smartCount() {
-            count++;
-            const label = document.getElementById('dhikr-label');
-            const counterDisp = document.getElementById('counter');
-            const goalDisp = document.getElementById('next-goal');
-
-            if (count <= 33) {
-                label.innerText = "سبحان الله";
-                goalDisp.innerText = "المرحلة: 33 سبحان الله";
-            } else if (count <= 66) {
-                label.innerText = "الحمد لله";
-                goalDisp.innerText = "المرحلة: 33 الحمد لله";
-            } else if (count <= 99) {
-                label.innerText = "الله أكبر";
-                goalDisp.innerText = "المرحلة: 33 الله أكبر";
-            } else if (count === 100) {
-                label.innerText = "لا إله إلا الله وحده لا شريك له، له الملك وله الحمد يحيي ويميت وهو على كل شيء قدير";
-                label.className = "text-sm font-bold text-yellow-500 animate-pulse px-4";
-                goalDisp.innerText = "تمت السلسلة كاملة بفضل الله";
-            } else {
-                resetSibha();
-                return;
-            }
-            counterDisp.innerText = count;
-            if(window.navigator.vibrate) window.navigator.vibrate(40);
-        }
-
-        function resetSibha() {
-            count = 0;
-            document.getElementById('counter').innerText = "0";
-            document.getElementById('dhikr-label').innerText = "سبحان الله";
-            document.getElementById('dhikr-label').className = "text-2xl font-bold mb-4 text-emerald-400";
-            document.getElementById('next-goal').innerText = "المرحلة: 33 تسبيحة";
-        }
-
-        // --- برمجة المصحف والقراء ---
-        async function loadSurahs() {
-            const res = await fetch('https://api.alquran.cloud/v1/surah');
-            const data = await res.json();
-            const select = document.getElementById('surah-select');
-            data.data.forEach(s => {
-                let opt = document.createElement('option');
-                opt.value = s.number;
-                opt.text = `${s.number}. ${s.name}`;
-                select.appendChild(opt);
-            });
-        }
-
-        async function updateMedia() {
-            const sNum = document.getElementById('surah-select').value;
-            const reader = document.getElementById('reader-select').value;
-            const player = document.getElementById('main-player');
-            
-            player.src = `https://cdn.islamic.network/quran/audio-surah/128/${reader}/${sNum}.mp3`;
-            player.play();
-
-            const display = document.getElementById('quran-display');
-            const textCont = document.getElementById('surah-text');
-            display.classList.remove('hidden');
-            textCont.innerText = "كلام الله يتنزل الآن...";
-
-            const res = await fetch(`https://api.alquran.cloud/v1/surah/${sNum}`);
-            const d = await res.json();
-            document.getElementById('surah-name').innerText = d.data.name;
-            textCont.innerHTML = d.data.ayahs.map(a => `${a.text} <span class="text-emerald-500 text-xl">﴿${a.numberInSurah}﴾</span>`).join(' ');
-        }
-
-        function downloadSurah() {
-            const player = document.getElementById('main-player');
-            if(!player.src) return alert("اختر السورة أولاً");
-            const a = document.createElement('a');
-            a.href = player.src;
-            a.download = "Rouhaniat_Surah.mp3";
-            a.click();
-        }
-
-        document.getElementById('surah-select').onchange = updateMedia;
-        document.getElementById('reader-select').onchange = updateMedia;
-        window.onload = loadSurahs;
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
