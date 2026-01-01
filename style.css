@@ -11,30 +11,32 @@ body {
     margin: 0; padding: 0;
     background: radial-gradient(circle at center, var(--royal-purple) 0%, var(--deep-blue) 100%);
     color: white; font-family: 'Tajawal', sans-serif;
-    overflow-x: hidden;
+    min-height: 100vh; overflow-x: hidden;
 }
 
 /* حبل اللمبات الملونة */
 .bulb-string {
     position: fixed; top: 0; width: 100%; height: 40px;
     display: flex; justify-content: space-around; z-index: 1000;
+    pointer-events: none;
 }
 
 .bulb {
-    width: 15px; height: 18px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    width: 12px; height: 15px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     animation: glow 1s infinite alternate;
 }
 
 @keyframes glow {
     0% { filter: brightness(0.5); transform: scale(0.9); }
-    100% { filter: brightness(1.5); transform: scale(1.1); box-shadow: 0 0 15px currentColor; }
+    100% { filter: brightness(1.8); transform: scale(1.1); box-shadow: 0 0 15px currentColor; }
 }
 
-/* فوانيس بتتحرك في الخلفية */
+/* فوانيس الزينة المتحركة */
 .hanging-lantern {
-    position: fixed; width: 80px; z-index: 50;
+    position: fixed; width: 70px; z-index: 50;
     animation: swing 4s ease-in-out infinite;
     transform-origin: top center;
+    pointer-events: none;
 }
 
 @keyframes swing {
@@ -42,25 +44,37 @@ body {
     50% { transform: rotate(8deg); }
 }
 
-/* كروت زجاجية ذهبية */
+/* تأثير النجوم في الخلفية */
+.star {
+    position: absolute; background: white; border-radius: 50%;
+    opacity: 0.5; animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* الكروت الزجاجية الذهبية */
 .glass-card {
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
-    border: 2px solid rgba(255, 223, 0, 0.2);
-    border-radius: 40px;
-    transition: 0.5s;
-    position: relative; overflow: hidden;
+    border: 1px solid rgba(255, 223, 0, 0.2);
+    border-radius: 35px;
+    transition: 0.4s;
 }
 
 .glass-card:hover {
     border-color: var(--gold);
     transform: translateY(-10px);
-    box-shadow: 0 0 40px rgba(255, 223, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(255, 223, 0, 0.15);
 }
 
 .gold-title {
     background: linear-gradient(to bottom, #fff5aa, #d4af37);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    font-weight: 900;
 }
+
+.quran-font { font-family: 'Amiri', serif; }
