@@ -2,7 +2,6 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إمساكية رمضان 2026 | روحانيات</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -10,63 +9,64 @@
 </head>
 <body class="p-4 md:p-8">
 
+    <div class="bulb-string">
+        <div class="bulb" style="color: #ff0000; background: #ff0000;"></div>
+        <div class="bulb" style="color: #ffdf00; background: #ffdf00; animation-delay: 0.2s"></div>
+        <div class="bulb" style="color: #00ff00; background: #00ff00; animation-delay: 0.4s"></div>
+        <div class="bulb" style="color: #00ffff; background: #00ffff; animation-delay: 0.6s"></div>
+    </div>
+
     <nav class="max-w-6xl mx-auto mb-10">
-        <a href="index.html" class="glass px-6 py-3 text-sm gold-text hover:bg-white/10 transition-all inline-flex items-center gap-2">
-            <i class="fas fa-arrow-right"></i> العودة للرئيسية
+        <a href="index.html" class="glass-card px-8 py-3 text-gold inline-block">
+            <i class="fas fa-arrow-right ml-2"></i> العودة للرئيسية
         </a>
     </nav>
 
     <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        <div class="lg:col-span-1 space-y-6">
-            <div class="glass p-8 border-t-4 border-yellow-600">
-                <h3 class="gold-text text-2xl font-black mb-6 flex items-center gap-3">
-                    <i class="fas fa-clock"></i> مواقيت الصلاة
-                </h3>
+        <div class="space-y-6">
+            <div class="glass-card p-8 border-t-4 border-yellow-500">
+                <h3 class="gold-title text-2xl font-black mb-6 text-center">مواقيت الصلاة اليوم</h3>
                 <div id="prayer-times" class="space-y-4">
-                    <div class="flex justify-between items-center p-3 bg-white/5 rounded-xl border border-white/5">
-                        <span class="font-bold">الفجر</span>
-                        <span class="text-emerald-400 font-black">04:12 ص</span>
+                    <div class="flex justify-between p-3 bg-white/5 rounded-xl border border-white/10">
+                        <span class="text-gray-300">الفجر</span>
+                        <span class="text-yellow-400 font-bold">04:15 ص</span>
                     </div>
-                    <div class="flex justify-between items-center p-3 bg-white/5 rounded-xl border border-white/5">
-                        <span class="font-bold">الشروق</span>
-                        <span class="text-gray-400">05:45 ص</span>
+                    <div class="flex justify-between p-3 bg-white/5 rounded-xl border border-white/10">
+                        <span class="text-gray-300">الظهر</span>
+                        <span class="text-yellow-400 font-bold">12:10 م</span>
                     </div>
-                    <div class="flex justify-between items-center p-3 bg-white/5 rounded-xl border border-white/5">
-                        <span class="font-bold">الظهر</span>
-                        <span class="text-emerald-400 font-black">12:08 م</span>
+                    <div class="flex justify-between p-3 bg-white/5 rounded-xl border border-white/10">
+                        <span class="text-gray-300">العصر</span>
+                        <span class="text-yellow-400 font-bold">03:30 م</span>
                     </div>
-                    <div class="flex justify-between items-center p-3 bg-white/5 rounded-xl border border-white/5">
-                        <span class="font-bold">العصر</span>
-                        <span class="text-emerald-400 font-black">03:15 م</span>
+                    <div class="flex justify-between p-4 bg-yellow-600/20 rounded-xl border-2 border-yellow-500 shadow-[0_0_15px_rgba(255,223,0,0.2)]">
+                        <span class="text-white font-black">المغرب (الإفطار)</span>
+                        <span class="text-white font-black text-xl">06:08 م</span>
                     </div>
-                    <div class="flex justify-between items-center p-4 bg-yellow-600/20 rounded-xl border border-yellow-500/50 scale-105 shadow-lg">
-                        <span class="font-black text-yellow-500">المغرب (الإفطار)</span>
-                        <span class="text-yellow-500 font-black text-xl">06:05 م</span>
-                    </div>
-                    <div class="flex justify-between items-center p-3 bg-white/5 rounded-xl border border-white/5">
-                        <span class="font-bold">العشاء</span>
-                        <span class="text-emerald-400 font-black">07:25 م</span>
+                    <div class="flex justify-between p-3 bg-white/5 rounded-xl border border-white/10">
+                        <span class="text-gray-300">العشاء</span>
+                        <span class="text-yellow-400 font-bold">07:30 م</span>
                     </div>
                 </div>
-                <p class="text-[10px] text-center text-gray-500 mt-4 italic">المواقيت تقديرية لعام 2026 - القاهرة</p>
             </div>
 
-            <div class="glass p-6 text-center">
-                <h4 class="gold-text font-bold mb-4 italic">راديو القرآن الكريم (مباشر)</h4>
-                <audio controls class="w-full h-10 opacity-80">
+            <div class="glass-card p-6 text-center">
+                <h4 class="text-gold font-bold mb-4 italic">بث مباشر - إذاعة القرآن الكريم</h4>
+                <audio controls class="w-full h-10">
                     <source src="https://stream.zeno.fm/f677p8b7tu0uv" type="audio/mpeg">
                 </audio>
+                <p class="text-[10px] text-gray-500 mt-2 italic">استمع للقرآن أثناء تصفح الإمساكية</p>
             </div>
         </div>
 
         <div class="lg:col-span-2">
-            <div class="glass p-8 overflow-hidden">
-                <h3 class="gold-text text-2xl font-black mb-8 text-center">إمساكية شهر رمضان المبارك 1447هـ - 2026م</h3>
+            <div class="glass-card p-8 overflow-hidden border-t-4 border-yellow-500">
+                <h3 class="gold-title text-2xl font-black mb-8 text-center">إمساكية رمضان 1447هـ - 2026م</h3>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-center text-sm">
+                    <table class="w-full text-center">
                         <thead>
-                            <tr class="border-b border-gold/20 text-emerald-400">
+                            <tr class="border-b border-yellow-500/30 text-yellow-500">
                                 <th class="p-4">رمضان</th>
                                 <th class="p-4">اليوم</th>
                                 <th class="p-4">ميلادي</th>
@@ -75,55 +75,56 @@
                             </tr>
                         </thead>
                         <tbody class="text-gray-300">
-                            <tr class="border-b border-white/5 hover:bg-white/5 transition-all">
-                                <td class="p-4 font-bold">1</td>
+                            <tr class="border-b border-white/5 hover:bg-white/5">
+                                <td class="p-4 font-bold text-white">1</td>
                                 <td class="p-4">الجمعة</td>
                                 <td class="p-4">20 فبراير</td>
-                                <td class="p-4 italic">04:12</td>
-                                <td class="p-4 text-yellow-500 font-bold">06:05</td>
-                            </tr>
-                            <tr class="border-b border-white/5 hover:bg-white/5 transition-all">
-                                <td class="p-4 font-bold">2</td>
-                                <td class="p-4">السبت</td>
-                                <td class="p-4">21 فبراير</td>
-                                <td class="p-4 italic">04:11</td>
-                                <td class="p-4 text-yellow-500 font-bold">06:06</td>
-                            </tr>
-                            <tr class="border-b border-white/5 hover:bg-white/5 transition-all">
-                                <td class="p-4 font-bold">3</td>
-                                <td class="p-4">الأحد</td>
-                                <td class="p-4">22 فبراير</td>
-                                <td class="p-4 italic">04:10</td>
-                                <td class="p-4 text-yellow-500 font-bold">06:07</td>
-                            </tr>
-                            <tr class="border-b border-white/5 hover:bg-white/5 transition-all">
-                                <td class="p-4 font-bold">4</td>
-                                <td class="p-4">الإثنين</td>
-                                <td class="p-4">23 فبراير</td>
-                                <td class="p-4 italic">04:09</td>
+                                <td class="p-4 italic">04:15</td>
                                 <td class="p-4 text-yellow-500 font-bold">06:08</td>
                             </tr>
-                            <tr class="border-b border-white/5 hover:bg-white/5 transition-all bg-emerald-500/5">
-                                <td class="p-4 font-bold">5</td>
+                            <tr class="border-b border-white/5 hover:bg-white/5">
+                                <td class="p-4 font-bold text-white">2</td>
+                                <td class="p-4">السبت</td>
+                                <td class="p-4">21 فبراير</td>
+                                <td class="p-4 italic">04:14</td>
+                                <td class="p-4 text-yellow-500 font-bold">06:09</td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5">
+                                <td class="p-4 font-bold text-white">3</td>
+                                <td class="p-4">الأحد</td>
+                                <td class="p-4">22 فبراير</td>
+                                <td class="p-4 italic">04:13</td>
+                                <td class="p-4 text-yellow-500 font-bold">06:10</td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5">
+                                <td class="p-4 font-bold text-white">4</td>
+                                <td class="p-4">الإثنين</td>
+                                <td class="p-4">23 فبراير</td>
+                                <td class="p-4 italic">04:12</td>
+                                <td class="p-4 text-yellow-500 font-bold">06:11</td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 bg-yellow-500/5">
+                                <td class="p-4 font-bold text-white">5</td>
                                 <td class="p-4">الثلاثاء</td>
                                 <td class="p-4">24 فبراير</td>
-                                <td class="p-4 italic">04:08</td>
-                                <td class="p-4 text-yellow-500 font-bold">06:09</td>
+                                <td class="p-4 italic">04:11</td>
+                                <td class="p-4 text-yellow-500 font-bold">06:12</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="mt-8 p-4 bg-emerald-900/20 rounded-2xl text-xs text-emerald-100 text-center leading-relaxed">
-                    "عن أبي هريرة رضي الله عنه قال: قال رسول الله ﷺ: إذا كان أول ليلة من شهر رمضان صفدت الشياطين ومردة الجن."
+                <div class="mt-8 p-4 bg-white/5 rounded-2xl border border-yellow-500/20">
+                    <p class="text-center text-sm italic text-yellow-200">
+                        "اللهم بلّغنا رمضان وأعنّا فيه على الصيام والقيام"
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="mt-20 text-center opacity-50">
-        <p class="text-xs">تصميم وإدارة: <span class="gold-text">كابتن عبد الناصر طلعت</span></p>
+    <footer class="mt-20 text-center opacity-40">
+        <p class="text-xs">تصميم: <span class="gold-title font-bold">كابتن عبد الناصر طلعت</span></p>
     </footer>
 
-    <script src="main.js"></script>
 </body>
 </html>
