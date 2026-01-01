@@ -2,76 +2,45 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>روحانيات 2026 | كابتن عبد الناصر</title>
+    <title>روحانيات |  </title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
 
-    <div class="light-string">
-        <div class="bulb" style="animation-delay: 0.1s"></div>
-        <div class="bulb" style="animation-delay: 0.3s"></div>
-        <div class="bulb" style="animation-delay: 0.5s"></div>
-        <div class="bulb" style="animation-delay: 0.7s"></div>
-        <div class="bulb" style="animation-delay: 0.9s"></div>
-        <div class="bulb" style="animation-delay: 1.1s"></div>
+    <div class="bulb-string">
+        <div class="bulb" style="color: #ff0000; background: #ff0000; animation-delay: 0.1s"></div>
+        <div class="bulb" style="color: #ffdf00; background: #ffdf00; animation-delay: 0.3s"></div>
+        <div class="bulb" style="color: #00ff00; background: #00ff00; animation-delay: 0.5s"></div>
+        <div class="bulb" style="color: #0000ff; background: #0000ff; animation-delay: 0.7s"></div>
+        <div class="bulb" style="color: #ff00ff; background: #ff00ff; animation-delay: 0.9s"></div>
     </div>
 
-    <img src="https://cdn-icons-png.flaticon.com/512/2160/2160912.png" class="lantern" style="top: 20px; right: 10%;">
-    <img src="https://cdn-icons-png.flaticon.com/512/2160/2160912.png" class="lantern" style="top: 20px; left: 10%; animation-delay: 1.5s;">
+    <img src="https://cdn-icons-png.flaticon.com/512/2160/2160912.png" class="hanging-lantern" style="right: 5%; top: 0;">
+    <img src="https://cdn-icons-png.flaticon.com/512/2880/2880053.png" class="hanging-lantern" style="left: 5%; top: 0; animation-delay: 2s;">
 
-    <div class="container mx-auto px-4 py-20 relative z-10">
-        
-        <header class="text-center mb-20 animate__animated animate__fadeIn">
-            <h1 class="text-8xl md:text-9xl font-black gold-glow mb-4">روحانيات</h1>
-            <p class="text-2xl text-emerald-400 font-bold mb-10">مرحباً بك في رمضان 2026 مع كابتن عبد الناصر</p>
+    <div class="container mx-auto px-4 py-24 text-center">
+        <h1 class="text-7xl md:text-9xl font-black gold-title mb-6">روحانيات</h1>
+        <p class="text-xl text-yellow-200 mb-16 italic">بوابة كابتن عبد الناصر طلعت الرمضانية</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <a href="quran.html" class="glass-card p-12 group">
+                <img src="https://cdn-icons-png.flaticon.com/512/2413/2413155.png" class="w-24 mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <h3 class="text-2xl font-bold text-white">المصحف الشامل</h3>
+            </a>
             
-            <div class="flex justify-center gap-6">
-                <div class="glass p-8 min-w-[120px] animate__animated animate__pulse animate__infinite">
-                    <span id="days" class="text-5xl font-black text-white">--</span>
-                    <p class="text-gold mt-2">يوم</p>
-                </div>
-                <div class="glass p-8 min-w-[120px]">
-                    <span id="hours" class="text-5xl font-black text-white">--</span>
-                    <p class="text-gold mt-2">ساعة</p>
-                </div>
-            </div>
-        </header>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-            <a href="quran.html" class="glass p-12 text-center group">
-                <img src="https://cdn-icons-png.flaticon.com/512/2413/2413155.png" class="w-20 mx-auto mb-6 group-hover:scale-110 transition-transform">
-                <h3 class="text-2xl font-black mb-4">المصحف الشامل</h3>
-                <p class="text-gray-400">استماع وقراءة بدون لاج</p>
+            <a href="ramadan.html" class="glass-card p-12 group">
+                <img src="https://cdn-icons-png.flaticon.com/512/2619/2619324.png" class="w-24 mx-auto mb-6 group-hover:rotate-12 transition-transform">
+                <h3 class="text-2xl font-bold text-white">إمساكية 2026</h3>
             </a>
 
-            <a href="ramadan.html" class="glass p-12 text-center group">
-                <img src="https://cdn-icons-png.flaticon.com/512/2619/2619324.png" class="w-20 mx-auto mb-6 group-hover:rotate-12 transition-transform">
-                <h3 class="text-2xl font-black mb-4">بوابة رمضان</h3>
-                <p class="text-gray-400">إمساكية ومواقيت الصلاة</p>
-            </a>
-
-            <a href="dhikr.html" class="glass p-12 text-center group">
-                <img src="https://cdn-icons-png.flaticon.com/512/4300/4300325.png" class="w-20 mx-auto mb-6 group-hover:scale-110 transition-transform">
-                <h3 class="text-2xl font-black mb-4">واحة الذاكرين</h3>
-                <p class="text-gray-400">السبحة الإلكترونية الذكية</p>
+            <a href="dhikr.html" class="glass-card p-12 group">
+                <img src="https://cdn-icons-png.flaticon.com/512/4300/4300325.png" class="w-24 mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <h3 class="text-2xl font-bold text-white">السبحة والأذكار</h3>
             </a>
         </div>
     </div>
 
-    <script>
-        for (let i = 0; i < 50; i++) {
-            let star = document.createElement('div');
-            star.className = 'star';
-            star.style.width = Math.random() * 3 + 'px';
-            star.style.height = star.style.width;
-            star.style.top = Math.random() * 100 + 'vh';
-            star.style.left = Math.random() * 100 + 'vw';
-            star.style.animationDelay = Math.random() * 2 + 's';
-            document.body.appendChild(star);
-        }
-    </script>
     <script src="main.js"></script>
 </body>
 </html>
