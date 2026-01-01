@@ -2,45 +2,54 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>روحانيات |  </title>
+    <title>روحانيات 2026 |  </title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 
     <div class="bulb-string">
-        <div class="bulb" style="color: #ff0000; background: #ff0000; animation-delay: 0.1s"></div>
-        <div class="bulb" style="color: #ffdf00; background: #ffdf00; animation-delay: 0.3s"></div>
-        <div class="bulb" style="color: #00ff00; background: #00ff00; animation-delay: 0.5s"></div>
-        <div class="bulb" style="color: #0000ff; background: #0000ff; animation-delay: 0.7s"></div>
-        <div class="bulb" style="color: #ff00ff; background: #ff00ff; animation-delay: 0.9s"></div>
+        <div class="bulb" style="color: #ff0000; background: #ff0000;"></div>
+        <div class="bulb" style="color: #ffdf00; background: #ffdf00; animation-delay: 0.2s"></div>
+        <div class="bulb" style="color: #00ff00; background: #00ff00; animation-delay: 0.4s"></div>
+        <div class="bulb" style="color: #00ffff; background: #00ffff; animation-delay: 0.6s"></div>
+        <div class="bulb" style="color: #ff00ff; background: #ff00ff; animation-delay: 0.8s"></div>
     </div>
 
     <img src="https://cdn-icons-png.flaticon.com/512/2160/2160912.png" class="hanging-lantern" style="right: 5%; top: 0;">
     <img src="https://cdn-icons-png.flaticon.com/512/2880/2880053.png" class="hanging-lantern" style="left: 5%; top: 0; animation-delay: 2s;">
 
-    <div class="container mx-auto px-4 py-24 text-center">
-        <h1 class="text-7xl md:text-9xl font-black gold-title mb-6">روحانيات</h1>
-        <p class="text-xl text-yellow-200 mb-16 italic">بوابة كابتن عبد الناصر طلعت الرمضانية</p>
+    <div class="container mx-auto px-4 py-20 text-center relative z-10">
+        <h1 class="text-8xl md:text-9xl gold-title mb-6">روحانيات</h1>
+        <p class="text-xl text-yellow-100 mb-16 italic font-bold">بوابة كابتن عبد الناصر طلعت الرمضانية</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
             <a href="quran.html" class="glass-card p-12 group">
                 <img src="https://cdn-icons-png.flaticon.com/512/2413/2413155.png" class="w-24 mx-auto mb-6 group-hover:scale-110 transition-transform">
-                <h3 class="text-2xl font-bold text-white">المصحف الشامل</h3>
+                <h3 class="text-2xl font-bold">المصحف الشامل</h3>
             </a>
-            
             <a href="ramadan.html" class="glass-card p-12 group">
                 <img src="https://cdn-icons-png.flaticon.com/512/2619/2619324.png" class="w-24 mx-auto mb-6 group-hover:rotate-12 transition-transform">
-                <h3 class="text-2xl font-bold text-white">إمساكية 2026</h3>
+                <h3 class="text-2xl font-bold">إمساكية 2026</h3>
             </a>
-
             <a href="dhikr.html" class="glass-card p-12 group">
                 <img src="https://cdn-icons-png.flaticon.com/512/4300/4300325.png" class="w-24 mx-auto mb-6 group-hover:scale-110 transition-transform">
-                <h3 class="text-2xl font-bold text-white">السبحة والأذكار</h3>
+                <h3 class="text-2xl font-bold">السبحة والأذكار</h3>
             </a>
         </div>
     </div>
 
-    <script src="main.js"></script>
+    <script>
+        // كود النجوم المتحركة
+        for (let i = 0; i < 40; i++) {
+            let star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.left = Math.random() * 100 + 'vw';
+            document.body.appendChild(star);
+        }
+    </script>
 </body>
 </html>
