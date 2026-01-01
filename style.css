@@ -1,0 +1,60 @@
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;700;900&display=swap');
+
+:root {
+    --gold: #d4af37;
+    --emerald: #10b981;
+    --night: #020617;
+    --glass: rgba(255, 255, 255, 0.03);
+}
+
+body {
+    margin: 0; font-family: 'Tajawal', sans-serif;
+    background: var(--night);
+    background-image: radial-gradient(circle at top, #064e3b 0%, #020617 100%);
+    color: white; min-height: 100vh; overflow-x: hidden;
+}
+
+.quran-font { font-family: 'Amiri', serif; }
+
+.glass {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+.gold-text {
+    background: linear-gradient(to bottom, #fde68a, #d4af37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-link {
+    transition: 0.3s;
+    position: relative;
+}
+
+.nav-link:hover { color: var(--gold); }
+
+.lantern-swing {
+    animation: swing 4s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+@keyframes swing {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #b45309, #d4af37);
+    transition: 0.3s;
+}
+.btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
