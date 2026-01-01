@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>المصحف الشامل | روحانيات</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-6">
+    <header class="text-center mb-10">
+        <a href="index.html" class="text-sm gold-text underline">العودة للرئيسية</a>
+        <h1 class="text-4xl font-black mt-4">المصحف الشامل المرتل</h1>
+    </header>
+
+    <div class="max-w-4xl mx-auto glass p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <select id="reader-select" class="bg-slate-900 p-4 rounded-2xl border border-emerald-500/30 text-white">
+                <option value="ar.minshawi">محمد صديق المنشاوي</option>
+                <option value="ar.abdulbasitmurattal">عبد الباسط عبد الصمد</option>
+                <option value="ar.alafasy">مشاري راشد العفاسي</option>
+                <option value="ar.husary">محمود خليل الحصري</option>
+            </select>
+            <select id="surah-select" onchange="updateQuran()" class="bg-slate-900 p-4 rounded-2xl border border-emerald-500/30 text-white"></select>
+        </div>
+        
+        <audio id="player" controls class="w-full mb-6"></audio>
+        <button onclick="downloadSurah()" class="btn-primary w-full py-4 rounded-2xl font-black">تحميل السورة MP3</button>
+
+        <div id="quran-text-area" class="mt-10 quran-font text-3xl leading-relaxed text-center p-6 border-t border-white/10">
+            اختر السورة لبدء القراءة والاستماع...
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        async function updateQuran() {
+            const reader = document.getElementById('reader-select').value;
+            const surah = document.getElementById('surah-select').value;
+            const player = document.getElementById('player');
+            player.src = `https://cdn.islamic.network/quran/audio-surah/128/${reader}/${surah}.mp3`;
+            player.play();
+
+            const res = await fetch(`https://api.alquran.cloud/v1/surah/${surah}`);
+            const data = await res.json();
+            document.getElementById('quran-text-area').innerHTML = data.data.ayahs.map(a => `${a.text} ﴿${a.numberInSurah}﴾`).join(' ');
+        }
+        function downloadSurah() {
+            const src = document.getElementById('player').src;
+            if(src) window.open(src, '_blank');
+        }
+    </script>
+</body>
+</html>
