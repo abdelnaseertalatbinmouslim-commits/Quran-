@@ -2,18 +2,32 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>واحة الذاكرين | روحانيات</title>
+    <title>السبحة والأذكار | روحانيات</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="flex items-center justify-center min-h-screen">
-    <div class="glass p-12 text-center max-w-sm w-full">
-        <a href="index.html" class="text-xs gold-text block mb-6">العودة للرئيسية</a>
-        <h2 id="sibha-text" class="text-2xl font-bold text-emerald-400 mb-4 h-20">سبحان الله</h2>
-        <div id="sibha-counter" class="text-8xl font-black mb-8">0</div>
-        <button onclick="smartSibha()" class="w-32 h-32 rounded-full border-4 border-gold bg-white/5 text-2xl active:scale-90 transition-all">إضغط</button>
-        <p class="mt-6 text-gray-500 text-xs">نظام التسبيح النبوي (33-33-33-1)</p>
+<body class="flex flex-col items-center justify-center min-h-screen p-4">
+    <a href="index.html" class="glass-card px-8 py-3 mb-10 text-gold">العودة للرئيسية</a>
+
+    <div class="glass-card p-12 text-center max-w-sm w-full relative">
+        <h2 id="dhikr-label" class="text-2xl font-bold text-yellow-400 mb-6 h-16">ابدأ التسبيح</h2>
+        <div id="counter" class="text-9xl font-black mb-10 gold-title">0</div>
+        <button onclick="count()" class="w-40 h-40 rounded-full border-8 border-yellow-600 bg-white/5 text-3xl font-bold active:scale-90 transition-all shadow-2xl">إضغط</button>
+        <p class="mt-8 text-gray-400 text-sm">التسبيح النبوي (33-33-33-1)</p>
     </div>
-    <script src="main.js"></script>
+
+    <script>
+        let c = 0;
+        function count() {
+            c++;
+            const label = document.getElementById('dhikr-label');
+            if(c <= 33) label.innerText = "سبحان الله";
+            else if(c <= 66) label.innerText = "الحمد لله";
+            else if(c <= 99) label.innerText = "الله أكبر";
+            else if(c === 100) label.innerText = "لا إله إلا الله..";
+            else { c = 1; label.innerText = "سبحان الله"; }
+            document.getElementById('counter').innerText = c;
+        }
+    </script>
 </body>
 </html>
