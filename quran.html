@@ -2,52 +2,135 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>المصحف الشامل | روحانيات</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="p-6">
-    <header class="text-center mb-10">
-        <a href="index.html" class="text-sm gold-text underline">العودة للرئيسية</a>
-        <h1 class="text-4xl font-black mt-4">المصحف الشامل المرتل</h1>
-    </header>
+<body class="p-4 md:p-8">
 
-    <div class="max-w-4xl mx-auto glass p-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <select id="reader-select" class="bg-slate-900 p-4 rounded-2xl border border-emerald-500/30 text-white">
-                <option value="ar.minshawi">محمد صديق المنشاوي</option>
-                <option value="ar.abdulbasitmurattal">عبد الباسط عبد الصمد</option>
-                <option value="ar.alafasy">مشاري راشد العفاسي</option>
-                <option value="ar.husary">محمود خليل الحصري</option>
-            </select>
-            <select id="surah-select" onchange="updateQuran()" class="bg-slate-900 p-4 rounded-2xl border border-emerald-500/30 text-white"></select>
+    <nav class="max-w-6xl mx-auto mb-10">
+        <a href="index.html" class="glass px-6 py-3 text-sm gold-text hover:bg-white/10 transition-all inline-flex items-center gap-2">
+            <i class="fas fa-arrow-right"></i> العودة للرئيسية
+        </a>
+    </nav>
+
+    <div class="max-w-4xl mx-auto glass p-6 md:p-10 border-t-4 border-emerald-500">
+        <h2 class="text-3xl font-black text-center gold-text mb-8">المصحف الصوتي المرتل</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div>
+                <label class="block text-xs text-emerald-400 mb-2 mr-2">اختر القارئ</label>
+                <select id="reader-select" onchange="updateQuran()" class="w-full bg-slate-900 p-4 rounded-2xl border border-emerald-500/30 text-white outline-none focus:border-emerald-500">
+                    <optgroup label="دولة التلاوة المصرية">
+                        <option value="ar.minshawi">محمد صديق المنشاوي</option>
+                        <option value="ar.abdulbasitmurattal">عبد الباسط عبد الصمد</option>
+                        <option value="ar.husary">محمود خليل الحصري</option>
+                        <option value="ar.mustafaismail">مصطفى إسماعيل</option>
+                        <option value="ar.banna">محمود علي البنا</option>
+                        <option value="ar.tablawi">محمد محمود الطبلاوي</option>
+                    </optgroup>
+                    <optgroup label="أئمة الحرمين والعالم">
+                        <option value="ar.alafasy">مشاري راشد العفاسي</option>
+                        <option value="ar.mahermuaiqly">ماهر المعيقلي</option>
+                        <option value="ar.yasseraldossari">ياسر الدوسري</option>
+                        <option value="ar.saudalshuraim">سعود الشريم</option>
+                        <option value="ar.ahmedajamy">أحمد العجمي</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-xs text-emerald-400 mb-2 mr-2">اختر السورة</label>
+                <select id="surah-select" onchange="updateQuran()" class="w-full bg-slate-900 p-4 rounded-2xl border border-emerald-500/30 text-white outline-none focus:border-emerald-500">
+                    </select>
+            </div>
         </div>
         
-        <audio id="player" controls class="w-full mb-6"></audio>
-        <button onclick="downloadSurah()" class="btn-primary w-full py-4 rounded-2xl font-black">تحميل السورة MP3</button>
+        <div class="bg-black/20 p-4 rounded-3xl mb-8">
+            <audio id="player" controls class="w-full"></audio>
+        </div>
 
-        <div id="quran-text-area" class="mt-10 quran-font text-3xl leading-relaxed text-center p-6 border-t border-white/10">
-            اختر السورة لبدء القراءة والاستماع...
+        <div class="flex gap-4 mb-10">
+            <button onclick="downloadSurah()" class="btn-primary flex-1 py-4 rounded-2xl font-black flex items-center justify-center gap-2">
+                <i class="fas fa-download"></i> تحميل السورة MP3
+            </button>
+        </div>
+
+        <div id="reading-area" class="mt-10 border-t border-white/10 pt-10">
+            <h3 id="surah-title" class="quran-font text-4xl text-center gold-text mb-8"></h3>
+            <div id="quran-text" class="quran-font text-3xl leading-[2.5] text-center select-text">
+                <p class="text-gray-500 text-xl italic">اختر السورة لبدء القراءة والاستماع...</p>
+            </div>
         </div>
     </div>
 
-    <script src="main.js"></script>
+    <footer class="mt-20 text-center opacity-50">
+        <p>تصميم وإدارة: <span class="gold-text">كابتن عبد الناصر طلعت</span></p>
+    </footer>
+
     <script>
+        // دالة تحميل السور عند فتح الصفحة
+        async function loadSurahList() {
+            const select = document.getElementById('surah-select');
+            const res = await fetch('https://api.alquran.cloud/v1/surah');
+            const data = await res.json();
+            data.data.forEach(surah => {
+                let opt = document.createElement('option');
+                opt.value = surah.number;
+                opt.text = `${surah.number}. ${surah.name}`;
+                select.appendChild(opt);
+            });
+        }
+
+        // دالة تحديث الصوت والنص
         async function updateQuran() {
             const reader = document.getElementById('reader-select').value;
-            const surah = document.getElementById('surah-select').value;
+            const surahNum = document.getElementById('surah-select').value;
             const player = document.getElementById('player');
-            player.src = `https://cdn.islamic.network/quran/audio-surah/128/${reader}/${surah}.mp3`;
+            const textCont = document.getElementById('quran-text');
+            const titleCont = document.getElementById('surah-title');
+
+            if(!surahNum) return;
+
+            // 1. تحديث الصوت (بدون لاج)
+            player.pause();
+            player.src = `https://cdn.islamic.network/quran/audio-surah/128/${reader}/${surahNum}.mp3`;
+            player.load();
             player.play();
 
-            const res = await fetch(`https://api.alquran.cloud/v1/surah/${surah}`);
-            const data = await res.json();
-            document.getElementById('quran-text-area').innerHTML = data.data.ayahs.map(a => `${a.text} ﴿${a.numberInSurah}﴾`).join(' ');
+            // 2. تحديث نص السورة للقراءة
+            textCont.innerHTML = "<p class='text-emerald-500 animate-pulse'>جاري تحميل كلام الله...</p>";
+            try {
+                const res = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}`);
+                const data = await res.json();
+                titleCont.innerText = data.data.name;
+                textCont.innerHTML = data.data.ayahs.map(a => 
+                    `${a.text} <span class="text-emerald-500 text-2xl">﴿${a.numberInSurah}﴾</span>`
+                ).join(' ');
+            } catch (err) {
+                textCont.innerText = "حدث خطأ في تحميل النص، يرجى المحاولة مرة أخرى.";
+            }
         }
+
+        // دالة التحميل
         function downloadSurah() {
             const src = document.getElementById('player').src;
-            if(src) window.open(src, '_blank');
+            if(!src) {
+                alert("يرجى اختيار السورة أولاً");
+                return;
+            }
+            const a = document.createElement('a');
+            a.href = src;
+            const surahName = document.getElementById('surah-select').options[document.getElementById('surah-select').selectedIndex].text;
+            a.download = `روحانيات_${surahName}.mp3`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
         }
+
+        window.onload = loadSurahList;
     </script>
 </body>
 </html>
