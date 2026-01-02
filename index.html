@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>روحانيات | كابتن ناصر</title>
+    <title>روحانيات 2026</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
@@ -23,31 +24,26 @@
     <div class="container mx-auto px-4 py-20 text-center relative z-10">
         <header class="mb-16">
             <h1 class="text-7xl md:text-9xl gold-title mb-6">روحانيات</h1>
-            <p class="text-xl md:text-2xl text-yellow-100 italic font-bold">بوابة كابتن عبد الناصر طلعت الرمضانية</p>
+            <p class="text-xl md:text-2xl text-yellow-100 italic font-bold italic">مرحباً بك في واحة السكينة والإيمان</p>
         </header>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            
             <a href="quran.html" class="glass-card p-10 group">
                 <img src="https://cdn-icons-png.flaticon.com/512/2413/2413155.png" class="w-20 mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <h3 class="text-xl font-bold">المصحف المسموع</h3>
             </a>
-
             <a href="mushaf.html" class="glass-card p-10 group">
                 <img src="https://cdn-icons-png.flaticon.com/512/3004/3004383.png" class="w-20 mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <h3 class="text-xl font-bold">المصحف المكتوب</h3>
             </a>
-            
             <a href="ramadan.html" class="glass-card p-10 group">
                 <img src="https://cdn-icons-png.flaticon.com/512/2619/2619324.png" class="w-20 mx-auto mb-6 group-hover:rotate-12 transition-transform">
                 <h3 class="text-xl font-bold">إمساكية 2026</h3>
             </a>
-
             <a href="dhikr.html" class="glass-card p-10 group">
                 <img src="https://cdn-icons-png.flaticon.com/512/4300/4300325.png" class="w-20 mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <h3 class="text-xl font-bold">السبحة والأذكار</h3>
             </a>
-
         </div>
     </div>
 
@@ -55,11 +51,12 @@
         for (let i = 0; i < 40; i++) {
             let star = document.createElement('div');
             star.className = 'star';
-            star.style.width = Math.random() * 2 + 'px';
-            star.style.height = star.style.width;
             star.style.top = Math.random() * 100 + 'vh';
             star.style.left = Math.random() * 100 + 'vw';
             document.body.appendChild(star);
+        }
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
         }
     </script>
 </body>
