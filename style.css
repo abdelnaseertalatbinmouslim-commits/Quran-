@@ -1,4 +1,3 @@
-/* style.css */
 @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;700;900&display=swap');
 
 :root {
@@ -14,7 +13,6 @@ body {
     min-height: 100vh; overflow-x: hidden;
 }
 
-/* حبل اللمبات الملونة */
 .bulb-string {
     position: fixed; top: 0; width: 100%; height: 40px;
     display: flex; justify-content: space-around; z-index: 1000;
@@ -31,7 +29,6 @@ body {
     100% { filter: brightness(1.8); transform: scale(1.1); box-shadow: 0 0 15px currentColor; }
 }
 
-/* فوانيس الزينة المتحركة */
 .hanging-lantern {
     position: fixed; width: 70px; z-index: 50;
     animation: swing 4s ease-in-out infinite;
@@ -44,7 +41,6 @@ body {
     50% { transform: rotate(8deg); }
 }
 
-/* تأثير النجوم في الخلفية */
 .star {
     position: absolute; background: white; border-radius: 50%;
     opacity: 0.5; animation: twinkle 2s infinite ease-in-out;
@@ -55,7 +51,6 @@ body {
     50% { opacity: 1; transform: scale(1.3); }
 }
 
-/* الكروت الزجاجية الذهبية */
 .glass-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
