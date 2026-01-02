@@ -1,0 +1,16 @@
+{
+  "name": "روحانيات",
+  "short_name": "روحانيات",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#ffdf00",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2160/2160912.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+
