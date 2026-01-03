@@ -2,52 +2,126 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>المصحف المسموع | روحانيات</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Tajawal', sans-serif; background: #020617; color: white; }
+        .reader-card { transition: 0.3s; cursor: pointer; border: 1px solid rgba(212, 175, 55, 0.2); }
+        .reader-card:hover { transform: translateY(-5px); border-color: #d4af37; background: rgba(212, 175, 55, 0.1); }
+        .reader-card.active { border-color: #ffdf00; background: rgba(212, 175, 55, 0.2); box-shadow: 0 0 15px rgba(255, 223, 0, 0.2); }
+        .quran-font { font-family: 'Amiri', serif; }
+        /* ستايل المشغل */
+        audio { height: 45px; filter: sepia(100%) saturate(500%) hue-rotate(10deg); }
+    </style>
 </head>
-<body class="p-4">
-    <nav class="max-w-4xl mx-auto my-6">
-        <a href="index.html" class="glass-card px-6 py-2 text-gold">العودة للرئيسية</a>
-    </nav>
-    <div class="max-w-4xl mx-auto glass-card p-8 border-t-4 border-yellow-500">
-        <h2 class="text-4xl text-center gold-title mb-10">المصحف الصوتي</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <select id="reader-select" onchange="updateQuran()" class="bg-slate-900 p-4 rounded-2xl border border-yellow-500/30 text-white outline-none">
-                <option value="ar.minshawi">محمد صديق المنشاوي</option>
-                <option value="ar.abdulbasitmurattal">عبد الباسط عبد الصمد</option>
-                <option value="ar.husary">محمود خليل الحصري</option>
-                <option value="ar.alafasy">مشاري راشد العفاسي</option>
-            </select>
-            <select id="surah-select" onchange="updateQuran()" class="bg-slate-900 p-4 rounded-2xl border border-yellow-500/30 text-white"></select>
+<body class="pb-32">
+
+    <header class="p-6 border-b border-white/5 flex justify-between items-center sticky top-0 bg-[#020617]/90 backdrop-blur-md z-50">
+        <a href="index.html" class="text-gold text-2xl">🏠</a>
+        <h1 class="gold-title text-2xl font-bold">المصحف المسموع</h1>
+        <div class="w-8"></div>
+    </header>
+
+    <div class="container mx-auto px-4 mt-8">
+        <h3 class="text-xl mb-6 border-r-4 border-gold pr-3">اختر القارئ المفضل</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-12" id="readers-grid">
+            </div>
+
+        <hr class="border-white/5 mb-10">
+
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+            <h3 class="text-xl border-r-4 border-gold pr-3">قائمة السور</h3>
+            <input type="text" id="searchSurah" placeholder="ابحث عن سورة..." class="bg-white/5 border border-white/10 rounded-full px-6 py-2 outline-none focus:border-gold w-full md:w-64">
         </div>
-        <audio id="player" controls class="w-full mb-8"></audio>
-        <button onclick="downloadSurah()" class="w-full py-5 rounded-3xl font-black bg-gradient-to-r from-yellow-700 to-yellow-500 flex items-center justify-center gap-4 shadow-2xl">
-            <img src="https://cdn-icons-png.flaticon.com/512/2413/2413155.png" width="30"> تحميل السورة
-        </button>
-        <div id="quran-text" class="mt-12 quran-font text-3xl leading-[2.2] text-center p-6 border-t border-white/10"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3" id="surahs-list">
+            </div>
     </div>
+
+    <div class="fixed bottom-0 left-0 right-0 bg-[#0f172a] border-t border-gold/30 p-4 z-[100] shadow-2xl">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center text-gold text-2xl">🌙</div>
+                <div>
+                    <h4 id="now-playing-surah" class="font-bold">اختر سورة</h4>
+                    <p id="now-playing-reader" class="text-xs text-gray-400">القاريء: --</p>
+                </div>
+            </div>
+            <audio id="main-audio" controls class="w-full md:w-1/2"></audio>
+            <button onclick="downloadSurah()" class="bg-gold text-black px-6 py-2 rounded-full font-bold text-sm hover:scale-105 transition">تحميل السورة</button>
+        </div>
+    </div>
+
     <script>
-        async function loadSurahs() {
+        const readers = [
+            { id: 'ar.minshawi', name: 'محمد صديق المنشاوي' },
+            { id: 'ar.abdulbasitmurattal', name: 'عبدالباسط عبدالصمد' },
+            { id: 'ar.husary', name: 'محمود خليل الحصري' },
+            { id: 'ar.alafasy', name: 'مشاري راشد العفاسي' },
+            { id: 'ar.mahermuaiqly', name: 'ماهر المعيقلي' },
+            { id: 'ar.shuraym', name: 'سعود الشريم' }
+        ];
+
+        let selectedReader = readers[0];
+
+        // عرض القراء
+        const readersGrid = document.getElementById('readers-grid');
+        readers.forEach((r, index) => {
+            const card = document.createElement('div');
+            card.className = `reader-card glass-card p-4 text-center rounded-2xl ${index === 0 ? 'active' : ''}`;
+            card.innerHTML = `<div class="w-16 h-16 bg-white/5 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl">👤</div>
+                             <h4 class="text-sm font-bold">${r.name}</h4>`;
+            card.onclick = () => {
+                document.querySelectorAll('.reader-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                selectedReader = r;
+                document.getElementById('now-playing-reader').innerText = `القاريء: ${r.name}`;
+            };
+            readersGrid.appendChild(card);
+        });
+
+        // جلب السور
+        async function getSurahs() {
             const res = await fetch('https://api.alquran.cloud/v1/surah');
             const data = await res.json();
-            const select = document.getElementById('surah-select');
-            data.data.forEach(s => {
-                let opt = document.createElement('option');
-                opt.value = s.number; opt.text = s.name; select.appendChild(opt);
+            displaySurahs(data.data);
+
+            document.getElementById('searchSurah').oninput = (e) => {
+                const filtered = data.data.filter(s => s.name.includes(e.target.value) || s.englishName.toLowerCase().includes(e.target.value.toLowerCase()));
+                displaySurahs(filtered);
+            };
+        }
+
+        function displaySurahs(surahs) {
+            const list = document.getElementById('surahs-list');
+            list.innerHTML = '';
+            surahs.forEach(s => {
+                const btn = document.createElement('div');
+                btn.className = 'glass-card p-4 flex justify-between items-center cursor-pointer hover:bg-white/5 transition';
+                btn.innerHTML = `<div><span class="text-gold ml-2">${s.number}.</span> <span class="quran-font text-xl">${s.name}</span></div>
+                                 <span class="text-xs text-gray-500">${s.numberOfAyahs} آية</span>`;
+                btn.onclick = () => playSurah(s.number, s.name);
+                list.appendChild(btn);
             });
         }
-        async function updateQuran() {
-            const reader = document.getElementById('reader-select').value;
-            const surah = document.getElementById('surah-select').value;
-            const player = document.getElementById('player');
-            player.src = `https://cdn.islamic.network/quran/audio-surah/128/${reader}/${surah}.mp3`;
-            const res = await fetch(`https://api.alquran.cloud/v1/surah/${surah}`);
-            const data = await res.json();
-            document.getElementById('quran-text').innerHTML = data.data.ayahs.map(a => `${a.text} ﴿${a.numberInSurah}﴾`).join(' ');
+
+        function playSurah(num, name) {
+            const audio = document.getElementById('main-audio');
+            audio.src = `https://cdn.islamic.network/quran/audio-surah/128/${selectedReader.id}/${num}.mp3`;
+            document.getElementById('now-playing-surah').innerText = name;
+            document.getElementById('now-playing-reader').innerText = `القاريء: ${selectedReader.name}`;
+            audio.play();
         }
-        function downloadSurah() { window.open(document.getElementById('player').src, '_blank'); }
-        window.onload = loadSurahs;
+
+        function downloadSurah() {
+            const src = document.getElementById('main-audio').src;
+            if(src) window.open(src, '_blank');
+        }
+
+        window.onload = getSurahs;
     </script>
 </body>
 </html>
